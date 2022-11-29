@@ -105,7 +105,7 @@ const OnboardingScreen = ({ navigation }) => {
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.navigate('Welcome')}
+                onPress={() => navigation.navigate('BottomTabBar')}
                 style={styles.startButtonStyle}>
                 <Text style={{ ...Fonts.whiteColor15Regular }}>Start</Text>
             </TouchableOpacity>

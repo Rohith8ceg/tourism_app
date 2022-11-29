@@ -114,7 +114,7 @@ const relatedPlacesList = [
 ];
 
 const MustVisitPlaceScreen = ({ navigation, route }) => {
-
+    console.log(route.params);
     const place = route.params.place;
 
     return (
@@ -308,8 +308,8 @@ const MustVisitPlaceScreen = ({ navigation, route }) => {
         return (
             <View style={styles.mapStyle}>
                 <GoogleMap
-                    latitude={37.33233141}
-                    longitude={-122.0312186}
+                    latitude={place.latitude}
+                    longitude={place.longitude}
                     height={270}
                 />
             </View>

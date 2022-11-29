@@ -163,7 +163,6 @@ const HomeScreen = ({ navigation }) => {
                 ListHeaderComponent={
                     <>
                         {userWelcome()}
-                        {searchTextField()}
                         {title({ title: 'Popular Places' })}
                         {popularPlaces()}
                         {title({ title: 'Popular Experiences' })}
@@ -386,32 +385,6 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={{ ...Fonts.blackColor20Bold }}>
                     {title}
                 </Text>
-                <Text style={{ ...Fonts.grayColor15Regular }}>
-                    View all
-                </Text>
-            </View>
-        )
-    }
-
-    function searchTextField() {
-        return (
-            <View style={styles.searchFieldWrapStyle}>
-                <MaterialIcons
-                    name="search"
-                    size={24}
-                    color={isSearch ? Colors.primaryColor : "gray"}
-                />
-                <TextInput
-                    placeholder="Search city,hotel,etc"
-                    style={{
-                        flex: 1,
-                        marginLeft: Sizes.fixPadding,
-                        ...Fonts.blackColor18Regular
-                    }}
-                    selectionColor={Colors.primaryColor}
-                    onFocus={() => updateState({ isSearch: true })}
-                    onBlur={() => updateState({ isSearch: false })}
-                />
             </View>
         )
     }
@@ -420,15 +393,13 @@ const HomeScreen = ({ navigation }) => {
         return (
             <View style={styles.userWelcomeWrapStyle}>
                 <View>
-                    <Text style={{ ...Fonts.grayColor15Regular }}>
-                        Hello, Ellison
-                    </Text>
+                    <Text></Text>
                     <Text style={{ ...Fonts.blackColor30Bold }}>
-                        Find deals
+                       Hello, Rohith
                     </Text>
                 </View>
                 <Image
-                    source={require('../../assets/images/user.jpg')}
+                    source={require('../../assets/images/user/user_8.jpg')}
                     style={{
                         height: 65.0,
                         width: 65.0,

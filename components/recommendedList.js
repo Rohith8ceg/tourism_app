@@ -6,6 +6,8 @@ export const recommendedsList = [
         rating: 5.0,
         place: 'Paris',
         amount: 70,
+        latitude: 48.8552471,
+        longitude: 2.2897241,
     },
     {
         id: '2',
@@ -14,6 +16,8 @@ export const recommendedsList = [
         rating: 4.0,
         place: 'London',
         amount: 50,
+        latitude: 50.15870616,
+        longitude: -1.1396495,
     },
     {
         id: '3',
@@ -22,6 +26,8 @@ export const recommendedsList = [
         rating: 5.0,
         place: 'France',
         amount: 60,
+        latitude: 48.8663416,
+        longitude: 2.3584188,
     },
     {
         id: '4',
@@ -30,6 +36,8 @@ export const recommendedsList = [
         rating: 4.0,
         place: 'Vietnam',
         amount: 55,
+        latitude: 21.0200557,
+        longitude: 105.8253265,
     },
     {
         id: '5',
@@ -38,6 +46,8 @@ export const recommendedsList = [
         rating: 3.0,
         place: 'Paris',
         amount: 35,
+        latitude: 48.883427,
+        longitude: 2.3231471,
     },
     {
         id: '6',
@@ -46,5 +56,7 @@ export const recommendedsList = [
         rating: 5.0,
         place: 'Paris',
         amount: 80,
+        latitude: 48.8500283,
+        longitude: 2.2812239,
     },
 ];

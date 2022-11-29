@@ -1,8 +1,8 @@
 export const markers = [
     {
         coordinate: {
-            latitude: 22.6293867,
-            longitude: 88.4354486,
+            latitude: 48.8739703,
+            longitude: 2.3483727,
         },
         id: '1',
         hotelImage: require('../assets/images/hotel/hotel_1.jpg'),
@@ -14,8 +14,8 @@ export const markers = [
     },
     {
         coordinate: {
-            latitude: 22.6345648,
-            longitude: 88.4377279,
+            latitude: 48.8663416,
+            longitude: 2.3584188,
         },
         id: '2',
         hotelImage: require('../assets/images/hotel/hotel_2.jpg'),
@@ -26,8 +26,8 @@ export const markers = [
     },
     {
         coordinate: {
-            latitude: 22.6281662,
-            longitude: 88.4410113,
+            latitude: 48.8555399,
+            longitude: 2.2914475,
         },
         id: '3',
         hotelImage: require('../assets/images/hotel/hotel_3.jpg'),
@@ -39,8 +39,8 @@ export const markers = [
     },
     {
         coordinate: {
-            latitude: 22.624251190376572,
-            longitude: 88.43461990356447,
+            latitude: 48.883427,
+            longitude: 2.3231471,
         },
         id: '4',
         hotelImage: require('../assets/images/hotel/hotel_4.jpg'),
@@ -52,8 +52,8 @@ export const markers = [
     },
     {
         coordinate: {
-            latitude: 22.6292757,
-            longitude: 88.444781,
+            latitude: 48.8500283,
+            longitude: 2.2812239,
         },
         id: '5',
         hotelImage: require('../assets/images/hotel/hotel_5.jpg'),
@@ -65,8 +65,8 @@ export const markers = [
     },
     {
         coordinate: {
-            latitude: 22.6304900,
-            longitude: 88.4377956,
+            latitude: 48.8634592,
+            longitude: 2.2915097,
         },
         id: '6',
         hotelImage: require('../assets/images/hotel/hotel_6.jpg'),
@@ -78,8 +78,8 @@ export const markers = [
     },
     {
         coordinate: {
-            latitude: 22.6287471,
-            longitude: 88.4392547,
+            latitude: 48.871991,
+            longitude: 2.3127683,
         },
         id: '7',
         hotelImage: require('../assets/images/hotel/hotel_7.jpg'),
@@ -91,8 +91,8 @@ export const markers = [
     },
     {
         coordinate: {
-            latitude: 22.6224884,
-            longitude: 88.4332895,
+            latitude: 48.8682694,
+            longitude: 2.3246162,
         },
         id: '8',
         hotelImage: require('../assets/images/hotel/hotel_8.jpg'),

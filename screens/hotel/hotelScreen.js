@@ -14,6 +14,8 @@ export const hotelsList = [
         rating: 5.0,
         place: 'Paris',
         amount: 70,
+        latitude: 48.8739703,
+        longitude: 2.3483727,
     },
     {
         id: '2',
@@ -22,6 +24,8 @@ export const hotelsList = [
         rating: 5.0,
         place: 'London',
         amount: 45,
+        latitude: 48.8663416,
+        longitude: 2.3584188,
     },
     {
         id: '3',
@@ -30,6 +34,8 @@ export const hotelsList = [
         rating: 5.0,
         place: 'Paris',
         amount: 75,
+        latitude: 48.8555399,
+        longitude: 2.2914475,
     },
     {
         id: '4',
@@ -38,6 +44,8 @@ export const hotelsList = [
         rating: 5.0,
         place: 'Paris',
         amount: 80,
+        latitude: 48.883427,
+        longitude: 2.3231471,
     },
     {
         id: '5',
@@ -46,6 +54,8 @@ export const hotelsList = [
         rating: 3.0,
         place: 'Paris',
         amount: 29,
+        latitude: 48.8500283,
+        longitude: 2.2812239,
     },
     {
         id: '6',
@@ -54,6 +64,8 @@ export const hotelsList = [
         rating: 5.0,
         place: 'Paris',
         amount: 110,
+        latitude: 48.8634592,
+        longitude: 2.2915097,
     },
     {
         id: '7',
@@ -62,6 +74,8 @@ export const hotelsList = [
         rating: 5.0,
         place: 'Paris',
         amount: 90,
+        latitude: 48.871991,
+        longitude: 2.3127683,
     },
     {
         id: '8',
@@ -70,6 +84,8 @@ export const hotelsList = [
         rating: 4.0,
         place: 'Paris',
         amount: 39,
+        latitude: 48.8682694,
+        longitude: 2.3246162,
     },
 ];
 
