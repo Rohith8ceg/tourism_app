@@ -128,6 +128,7 @@ const relatedPlacesList = [
 const HotelDetailScreen = ({ navigation, route }) => {
 
     const item = route.params.item;
+    console.log(item)
 
     const [state, setState] = useState({
         hotels: [
@@ -335,8 +336,8 @@ const HotelDetailScreen = ({ navigation, route }) => {
         return (
             <View style={styles.mapStyle}>
                 <GoogleMap
-                    latitude={37.33233141}
-                    longitude={-122.0312186}
+                    latitude={item.latitude}
+                    longitude={item.longitude}
                     height={250}
                 />
             </View>

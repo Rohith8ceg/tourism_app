@@ -65,9 +65,6 @@ const PopularExperienceScreen = ({ navigation, route }) => {
                     {includedInfo()}
                     {divider()}
                     {meetTheHostInfo()}
-                    {divider()}
-                    {title({ title: 'Where you\'ll be' })}
-                    {location()}
                 </ScrollView>
             </View>
             {amountInfoAndBookNowButton()}
@@ -178,11 +175,6 @@ const PopularExperienceScreen = ({ navigation, route }) => {
                     alignItems: 'flex-start',
                     marginTop: Sizes.fixPadding
                 }}>
-                    <View style={styles.contactHostButtonStyle}>
-                        <Text style={{ ...Fonts.primaryColor18Regular }}>
-                            Contact host
-                        </Text>
-                    </View>
                 </View>
 
             </View>

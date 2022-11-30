@@ -126,7 +126,7 @@ const LoginScreen = ({ navigation }) => {
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.navigate('Verification')}
+                onPress={() => navigation.navigate('HomeScreen')}
             >
                 <LinearGradient
                     start={{ x: 1, y: 0 }}

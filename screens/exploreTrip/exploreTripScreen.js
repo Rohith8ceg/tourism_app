@@ -38,7 +38,9 @@ const mustVisitablePlacesList = [
         rating: 5.0,
         placeName: 'Swiss Alps',
         location: 'Switzerland',
-        offerInPercentage: 15
+        offerInPercentage: 15,
+        latitude: 46.5601052,
+        longitude: 8.5523233,
     },
     {
         id: '2',
@@ -46,7 +48,9 @@ const mustVisitablePlacesList = [
         rating: 4.7,
         placeName: 'Mount Logan',
         location: 'Canada',
-        offerInPercentage: 18
+        offerInPercentage: 18,
+        latitude: 60.567,
+        longitude: -140.4140477,
     },
     {
         id: '3',
@@ -54,7 +58,9 @@ const mustVisitablePlacesList = [
         rating: 4.4,
         placeName: 'Mount Fuji',
         location: 'Japan',
-        offerInPercentage: 10
+        offerInPercentage: 10,
+        latitude: 35.3606247,
+        longitude: 138.7186086,
     },
     {
         id: '4',
@@ -62,7 +68,9 @@ const mustVisitablePlacesList = [
         rating: 4.0,
         placeName: 'Mauna Kea',
         location: 'United States',
-        offerInPercentage: 10
+        offerInPercentage: 10,
+        latitude: 19.8206099,
+        longitude: -155.4768484,
     },
     {
         id: '5',
@@ -70,7 +78,9 @@ const mustVisitablePlacesList = [
         rating: 4.8,
         placeName: 'Grand Teton',
         location: 'Wyoming',
-        offerInPercentage: 15
+        offerInPercentage: 15,
+        latitude: 43.7410407,
+        longitude: -110.811191,
     }
 ];
 
@@ -307,7 +317,6 @@ const ExploreTripScreen = ({ navigation }) => {
     }
 
     function mustVisitablePlaces() {
-
         const renderItem = ({ item }) => (
             <TouchableOpacity
                 activeOpacity={0.9}

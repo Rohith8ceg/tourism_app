@@ -32,18 +32,6 @@ const NotificationScreen = ({ navigation }) => {
                 description: 'You have successfully booked hotel.OrderId:OID1256789.',
 
             },
-            {
-                key: '2',
-                name: '25% Off use code TravelPro25',
-                iconName: 'tag',
-                description: 'Use code TravelPro25 for your booking between 20th sept to 25th sept and get 25% off.',
-            },
-            {
-                key: '3',
-                name: 'Flat $10 Off',
-                iconName: 'tag',
-                description: 'Use code TravelPro10 and get $10 off on your booking.',
-            },
         ],
     );
 
