@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import Carousel, { Pagination } from 'react-native-snap-carousel-v4';
 import { LinearGradient } from 'expo-linear-gradient';
 import GoogleMap from "../../components/googleMapScreeen";
-
+import { db } from "../../firebaseConfig";
 const { width } = Dimensions.get('screen');
 
 const PopularExperienceScreen = ({ navigation, route }) => {
@@ -24,7 +24,7 @@ const PopularExperienceScreen = ({ navigation, route }) => {
         ],
         activeSlide: 0,
     })
-
+    const [image, setImage] = useState(null);
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
     const {
@@ -33,7 +33,17 @@ const PopularExperienceScreen = ({ navigation, route }) => {
     } = state;
 
     const item = route.params.item;
-
+    async function fetch_img() {
+        await db
+          .collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+          .get()
+          .then((res) => {
+            console.log("----",res);
+            setImage(res.data()["base64"]);
+            console.log("fetched here in profile screen")
+          })
+      }
+    fetch_img();
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
             <StatusBar backgroundColor={Colors.primaryColor} />
@@ -112,7 +122,7 @@ const PopularExperienceScreen = ({ navigation, route }) => {
             <View style={{ marginHorizontal: Sizes.fixPadding * 2.0 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Image
-                        source={require('../../assets/images/user/user_1.jpg')}
+                         source={{ uri: `data:image/jpeg;base64,${image}` }}
                         style={{
                             width: 80.0,
                             height: 80.0,
@@ -237,7 +247,7 @@ const PopularExperienceScreen = ({ navigation, route }) => {
                         Experience hosted by peter
                     </Text>
                     <Image
-                        source={require('../../assets/images/user/user_1.jpg')}
+                         source={{ uri: `data:image/jpeg;base64,${image}` }}
                         style={{
                             height: 50.0,
                             width: 50.0,

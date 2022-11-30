@@ -5,6 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { recommendedsList } from "../../components/recommendedList";
 import { SharedElement } from 'react-navigation-shared-element';
+import { db } from "../../firebaseConfig";
 
 const popularPlacesList = [
     {
@@ -97,7 +98,7 @@ const HomeScreen = ({ navigation }) => {
     const [state, setState] = useState({
         isSearch: false,
     })
-
+    const [image, setImage] = useState(null);
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
     const { isSearch, } = state;
@@ -156,7 +157,16 @@ const HomeScreen = ({ navigation }) => {
             </View>
         </TouchableOpacity>
     )
-
+    async function fetch_img() {
+        await db
+          .collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+          .get()
+          .then((res) => {
+            console.log("----",res);
+            setImage(res.data()["base64"]);
+          })
+      }
+    fetch_img();
     return (
         <View style={{ flex: 1 }}>
             <FlatList
@@ -428,7 +438,7 @@ const HomeScreen = ({ navigation }) => {
                     </Text>
                 </View>
                 <Image
-                    source={require('../../assets/images/user.jpg')}
+                    source={{ uri: `data:image/jpeg;base64,${image}` }}
                     style={{
                         height: 65.0,
                         width: 65.0,

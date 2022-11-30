@@ -1,13 +1,12 @@
 import React, { useState,useEffect } from "react";
 import { Text, View, StatusBar, Image, TouchableOpacity, TextInput, Dimensions, SafeAreaView, StyleSheet } from "react-native";
 import { Ionicons, Feather, MaterialIcons } from '@expo/vector-icons';
-// import * as ImagePicker from "expo-image-picker";
-// import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 import { Fonts, Colors, Sizes } from "../../constants/styles";
 import Dialog from "react-native-dialog";
 import { BottomSheet } from '@rneui/themed';
 import { db } from "../../firebaseConfig";
-import { Constants, Permissions, ImagePicker } from 'expo';
 
 const { width } = Dimensions.get("screen");
 
@@ -30,6 +29,16 @@ const EditProfileScreen = ({ navigation }) => {
     const [changeEmail, setChangeEmail] = useState(email);
 
     const [isBottomSheet, setIsBottomSheet] = useState(false);
+    async function fetch_img() {
+        await db
+          .collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+          .get()
+          .then((res) => {
+            console.log("----",res);
+            setImage(res.data()["base64"]);
+          })
+      }
+    fetch_img();
     useEffect(() => {
         (async () => {
           if (Platform.OS !== "web") {
@@ -42,6 +51,7 @@ const EditProfileScreen = ({ navigation }) => {
           }
         })();
       }, []);
+
     const uploadImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -55,64 +65,54 @@ const EditProfileScreen = ({ navigation }) => {
           setImage(result.base64);
           console.log("-----");
         }
-        var test_json = {};
-        test_json["base64"] = image
-        db.collection("Data")
-            .add(test_json)
-            .then((res) => {
-                console.log("posted");
-            });
+        db.collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+               .set({"base64":"hey"})
+               .then((res) => {
+                   console.log("posted one");
+               });
+               db.collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+               .set({"base64":image})
+               .then((res) => {
+                   console.log("Image pushed!");
+                   fetch_img();
+               });
       };
 
-    const checkPerm = async () => {
-        if (Platform.OS !== "web") {
-            const { status } = await Permissions.getAsync(Permissions.CAMERA);
-            if (status !== "granted") {
-                alert("Sorry, we need camera roll permissions to make this work!");
-            }
+      const pickFromCamera = async ()=>{
+        const {granted} =  await Permissions.askAsync(Permissions.CAMERA)
+        if(granted){
+           let data =  await ImagePicker.launchCameraAsync({
+             mediaTypes:ImagePicker.MediaTypeOptions.Images,
+             allowsEditing:true,
+             aspect:[1,1],
+             quality:0.5,
+             base64: true,
+           })
+          if(!data.cancelled){
+            console.log("setting pic")
+            setImage(data.base64); 
+           }    
+        //    var test_json = {};
+        //    test_json["base64"] = image
+           db.collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+               .set({"base64":"hey"})
+               .then((res) => {
+                   console.log("posted one");
+               });
+               db.collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+               .set({"base64":image})
+               .then((res) => {
+                   console.log("Image pushed!");
+                   fetch_img();
+               });
         }
-    };
-    const pickImage = async () => {
-        console.log("result");
-        let result = await ImagePicker.launchCameraAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 1,
-            base64: true,
-        });
-
-        console.log(result);
-
-        if (!result.cancelled) {
-            setImage(result.base64);
-            var test_json = {};
-            test_json["base64"] = image
-            db.collection("Data")
-                .add(test_json)
-                .then((res) => {
-                    console.log("posted");
-                });
-        }
-    };
-
-    const pickFromCamera = async () => {
-        const permissions = 'Permissions.CAMERA';
-        const { status } = await Permissions.askAsync(permissions);
-        
-        console.log(permissions, status);
-        if(status === 'granted') {
-          let image = await ImagePicker.launchCameraAsync({
-            mediaTypes: 'Images',
-          }).catch(error => console.log(permissions, { error }));
-          console.log(permissions, 'SUCCESS', image);
+        else{
+          Alert.alert("you need to give up permission to work")
         }
       }
 
     const clickImage = () => {
         console.log("Here")
-        // checkPerm();
-        // pickImage();
         pickFromCamera();
     };
 
@@ -136,9 +136,12 @@ const EditProfileScreen = ({ navigation }) => {
         return (
             <View style={styles.profilePhotoWrapStyle}>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <Image source={require('../../assets/images/user/user_1.jpg')}
+                    {/* <Image source={require('../../assets/images/user/user_1.jpg')}
                         style={styles.profilePhotoStyle}
                         resizeMode="cover"
+                    /> */}
+                     <Image style={styles.profilePhotoStyle}
+                            source={{ uri: `data:image/jpeg;base64,${image}` }}
                     />
                     <TouchableOpacity
                         activeOpacity={0.9}

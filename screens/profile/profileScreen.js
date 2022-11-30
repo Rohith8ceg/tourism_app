@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, SafeAreaView, StatusBar, ScrollView, TouchableO
 import { Colors, Fonts, Sizes } from "../../constants/styles";
 import { MaterialIcons, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import Dialog from "react-native-dialog";
-
+import { db } from "../../firebaseConfig";
 const { width } = Dimensions.get('screen');
 
 const ProfileScreen = ({ navigation }) => {
@@ -11,11 +11,22 @@ const ProfileScreen = ({ navigation }) => {
     const [state, setState] = useState({
         logoutDialog: false,
     })
+    const [image, setImage] = useState(null);
 
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
     const { logoutDialog, } = state;
-
+    async function fetch_img() {
+        await db
+          .collection("Data").doc("oYgL6pfD9HvkXCbNhRBQ")
+          .get()
+          .then((res) => {
+            console.log("----",res);
+            setImage(res.data()["base64"]);
+            console.log("fetched here in profile screen")
+          })
+      }
+    fetch_img();
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
             <StatusBar backgroundColor={Colors.primaryColor} />
@@ -129,7 +140,7 @@ const ProfileScreen = ({ navigation }) => {
                 style={styles.userInfoWrapStyle}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Image
-                        source={require('../../assets/images/user/user_1.jpg')}
+                        source={{ uri: `data:image/jpeg;base64,${image}` }}
                         style={{
                             width: 80.0, height: 80.0,
                             borderRadius: Sizes.fixPadding - 5.0,
